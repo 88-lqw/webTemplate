@@ -42,11 +42,13 @@ axios.interceptors.response.use(
   // 错误catch
   error => {
     const errorInfo = error.response
+    console.log(errorInfo)
+    console.log('出现错误')
     if (errorInfo.status === 401) {
       store.dispatch('handleLogOut')
     }
-    if (errorInfo.data.data.errMsg) {
-      Message.error(errorInfo.data.data.errMsg)
+    if (errorInfo.data.message) {
+      Message.error(errorInfo.data.message)
     } else {
       Message.error('请求服务器错误')
       return

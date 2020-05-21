@@ -239,6 +239,7 @@
               })
             )
             .then(response => {
+              console.log(response)
               this.viewData.ImgSrc = '';
               this.$refs.avatarInput.value = "";
               this.viewData.Add = {};
@@ -257,14 +258,14 @@
           let image = {
             id: this.viewData.Edit.id,
             remark: this.viewData.Edit.remark,
-            orderId: this.viewData.Edit.orderId
+            sort: this.viewData.Edit.orderId
           };
           if (this.viewData.Edit.imageSrc !== this.viewData.ImgSrc) {
-            image.imageSrc = this.viewData.ImgSrc;
+            image.rotationImage = this.viewData.ImgSrc;
           }
           axios
             .put(
-              "/api/banner/update",
+              "/admin/rotation/update/",
               image
             )
             .then(response => {
@@ -304,7 +305,7 @@
       },
       searchManage() {
         axios.get('/admin/rotation/get').then(response => {
-          console.log(response)
+          // console.log(response)
           this.searchList.pageData.content = response.data.data
         })
       }
