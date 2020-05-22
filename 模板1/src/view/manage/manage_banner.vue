@@ -1,9 +1,9 @@
 <template>
   <Row :gutter="32">
     <Col span="24">
-    <Form>
+    <Form method="post" > 
       <Form-item>
-        <Form inline>
+        <Form inline >
           <Form-item>
             <Button icon="md-add" @click="showAdd()">增加</Button>
           </Form-item>
@@ -13,8 +13,8 @@
             Banner图吗？
           </Modal>
           <Modal v-model="viewData.modalAdd" title="添加Banner图" :mask-closable="false" @on-ok="onAddBtn" width="35"
-            @on-cancel="onModelCancel">
-            <Form :label-width="80">
+            @on-cancel="onModelCancel" enctype="multipart/form-data">
+            <Form :label-width="80" >
               <Form-item class="form_item" label="排序序号:">
                 <Input style="width: 200px" v-model="viewData.Add.orderId" type="text" placeholder="请输入正整数"></Input>
               </Form-item>
@@ -46,7 +46,7 @@
                 <Button class="choice_img">
                   <Icon type="ios-cloud-upload-outline"></Icon>上传图片
                   <input class="ImgC" type="file" name="avatar" accept="image/gif, image/jpeg, image/jpg, image/png"
-                    @change="changeImage($event)" ref="avatarInput" />
+                    @change="changeImage($event)" ref="avatarInput"  />
                 </Button>
               </Form-item>
               <Form-item label="预览图：">
@@ -204,6 +204,8 @@
         let file = e.target.files[0];
         let reader = new FileReader();
         let that = this;
+        // reader.readAsText(file);
+        //  reader.readAsBinaryString(file);
         reader.readAsDataURL(file);
         reader.onload = function (e) {
           that.viewData.ImgSrc = this.result;
@@ -227,6 +229,7 @@
           this.$Message.error("请输入排序序号");
           return;
         }
+        // console.log(this.viewData.ImgSrc)
         if (this.viewData.ImgSrc !== '') {
           this.$Message.warning("上传中，请稍后...");
           axios
@@ -234,9 +237,10 @@
               "/admin/rotation/create",
               qs.stringify({
                 remark: this.viewData.Add.remark,
-                id: this.viewData.Add.orderId,
-                rotationImage: this.viewData.ImgSrc
-              })
+                sort: this.viewData.Add.orderId,
+                rotationImage: this.viewData.ImgSrc,
+              }),
+             { "Content-Type ":"multipart/form-data"}
             )
             .then(response => {
               console.log(response)

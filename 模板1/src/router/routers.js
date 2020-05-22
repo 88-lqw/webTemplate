@@ -47,32 +47,32 @@ export default [{
     component: () => import('@/view/home-page')
   }]
 },
-{
-  path: '/goods',
-  name: 'goods',
-  meta: {
-    icon: 'md-cart',
-    title: '商品'
-  },
-  component: Main,
-  children: [{
-    path: 'goods_class',
-    name: 'goods_class',
-    meta: {
-      icon: 'ios-keypad',
-      title: '商品分类'
-    },
-    component: () => import('@/view/manage/manage_class.vue')
-  }, {
-    path: 'manage_goods',
-    name: 'manage_goods',
-    meta: {
-      icon: 'md-list-box',
-      title: '商品管理'
-    },
-    component: () => import('@/view/manage/manage_goods.vue')
-  }]
-},
+// {
+//   path: '/goods',
+//   name: 'goods',
+//   meta: {
+//     icon: 'md-cart',
+//     title: '商品'
+//   },
+//   component: Main,
+//   children: [{
+//     path: 'goods_class',
+//     name: 'goods_class',
+//     meta: {
+//       icon: 'ios-keypad',
+//       title: '商品分类'
+//     },
+//     component: () => import('@/view/manage/manage_class.vue')
+//   }, {
+//     path: 'manage_goods',
+//     name: 'manage_goods',
+//     meta: {
+//       icon: 'md-list-box',
+//       title: '商品管理'
+//     },
+//     component: () => import('@/view/manage/manage_goods.vue')
+//   }]
+// },
 {
   path: '/banner',
   name: 'banner',
@@ -101,20 +101,20 @@ export default [{
     component: () => import('@/view/manage/manage_message.vue')
   }]
 },
-{
-  path: '/user',
-  name: 'user',
-  component: Main,
-  children: [{
-    path: 'manage_user',
-    name: 'manage_user',
-    meta: {
-      icon: 'ios-people',
-      title: '用户管理'
-    },
-    component: () => import('@/view/manage/manage_user.vue')
-  }]
-},
+// {
+//   path: '/user',
+//   name: 'user',
+//   component: Main,
+//   children: [{
+//     path: 'manage_user',
+//     name: 'manage_user',
+//     meta: {
+//       icon: 'ios-people',
+//       title: '用户管理'
+//     },
+//     component: () => import('@/view/manage/manage_user.vue')
+//   }]
+// },
 {
   path: '/admin',
   name: 'admin',

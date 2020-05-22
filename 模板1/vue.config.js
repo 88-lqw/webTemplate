@@ -55,12 +55,21 @@ module.exports = {
       }
     }
   },
-
   css: {
     loaderOptions: {
       less: {
         javascriptEnabled: true
       }
+    }
+  },
+  //使用pwa配置来修改favicon小图标
+  pwa :{
+    iconPaths:{
+      favicon32:'favicon.icon',
+      favicon16:'favicon.icon',
+      appappleTouchIcon: 'favicon.ico',
+      maskIcon      : 'favicon.ico',
+      msTileImage   : 'favicon.ico'
     }
   }
 }
