@@ -96,12 +96,12 @@
           columns: [{
               title: "头像",
               width: 140,
-              key: "avatarUrl",
+              key: "avator",
               render: (h, params) => {
                 return h("div", [
                   h("img", {
                     attrs: {
-                      src: params.row.avatarUrl
+                      src: params.row.avator
                     },
                     style: {
                       width: "100px",
@@ -109,7 +109,7 @@
                     },
                     on: {
                       click: () => {
-                        this.showImg(params.row.avatarUrl);
+                        this.showImg(params.row.avator);
                       }
                     }
                   })
@@ -124,12 +124,7 @@
             {
               title: '管理员名',
               align: 'center',
-              key: 'name'
-            },
-            {
-              title: '账号',
-              align: 'center',
-              key: 'account'
+              key: 'username'
             },
             {
               title: '操作',
@@ -229,7 +224,7 @@
       },
       onDeleteBtn() {
         axios
-          .delete("/api/admin/delete", {
+          .delete("/admin/admin/delete", {
             data: {
               id: this.viewData.Delete.id
             }
@@ -315,14 +310,15 @@
       },
       searchManage() {
         axios
-          .get(`/api/admin/get`, {
+          .get(`/admin/admin/get`, {
             params: {
               page: this.searchList.searchCondition.page,
               name: this.searchList.searchCondition.name
             }
           })
           .then(res => {
-            this.searchList.pageData.content = res.data.data.data
+            console.log(res)
+            this.searchList.pageData.content = res.data.data
             this.searchList.pageData.total = res.data.data.total;
           })
       }

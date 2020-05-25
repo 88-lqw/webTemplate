@@ -50,6 +50,7 @@ class HttpRequest {
       if (!Object.keys(this.queue).length) {
         // Spin.show()
       }
+      console.log('请求拦截---')
       console.log(config)
       config.url = root + config.url
       this.queue[url] = true
@@ -59,6 +60,7 @@ class HttpRequest {
     })
     // 响应拦截
     instance.interceptors.response.use(res => {
+      console.log('响应拦截----') 
       // console.log(res)
       this.destroy(url)
       const {

@@ -96,7 +96,7 @@ export default [{
     name: 'manage_message',
     meta: {
       icon: 'ios-pricetag',
-      title: '消息管理'
+      title: '国家语言管理'
     },
     component: () => import('@/view/manage/manage_message.vue')
   }]
