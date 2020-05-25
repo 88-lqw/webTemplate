@@ -43,7 +43,6 @@ class HttpRequest {
       // Spin.hide()
     }
   }
-
   interceptors (instance, url) {
     // 请求拦截
     instance.interceptors.request.use(config => {

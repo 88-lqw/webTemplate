@@ -15,7 +15,7 @@
           <Modal v-model="viewData.modalAdd" title="添加Banner图" :mask-closable="false" @on-ok="onAddBtn" width="35"
             @on-cancel="onModelCancel" enctype="multipart/form-data">
             <Form :label-width="80" >
-              <Form-item class="form_item" label="排序序号:">
+              <Form-item class="form_item" label="图片id:">
                 <Input style="width: 200px" v-model="viewData.Add.orderId" type="text" placeholder="请输入正整数"></Input>
               </Form-item>
               <Form-item class="form_item" label="备注:">
@@ -200,6 +200,7 @@
           content: `<br /><img style="width: 100%" src=${[ad_picture_url]} />`
         });
       },
+      //图片格式的转换
       changeImage(e) {
         let file = e.target.files[0];
         let reader = new FileReader();
